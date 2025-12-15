@@ -1,1 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maatii K. Dungy | Academic Portfolio</title>
+  <meta name="description" content="Academic portfolio for Maatii K. Dungy — communications, media, and culture." />
+  <style>
+    :root{
+      --bg:#0f1115;
+      --panel:#141823;
+      --ink:#e9edf6;
+      --muted:#a9b2c6;
+      --line:rgba(255,255,255,.10);
+      --accent:#7fd1c4;
+      --accent2:#d6b36a;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1060px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(127,209,196,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 5%, rgba(214,179,106,.14), transparent 55%),
+        radial-gradient(900px 600px at 40% 110%, rgba(127,209,196,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{color:var(--accent)}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
 
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(15,17,21,.86), rgba(15,17,21,.55));
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{max-width:var(--max); margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg, rgba(127,209,196,.85), rgba(214,179,106,.75)); box-shadow: var(--shadow)}
+    .brand h1{font-size:14px; margin:0; letter-spacing:.3px}
+    .brand small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+    .links{display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end}
+    .pill{
+      font-size:12px; color:var(--muted);
+      padding:8px 10px; border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(20,24,35,.55);
+    }
+    .pill:hover{border-color:rgba(127,209,196,.55); color:var(--ink)}
+
+    /* Hero */
+    .hero{padding:34px 0 18px}
+    .hero-grid{display:grid; gap:16px; grid-template-columns: 1.2fr .8fr}
+    @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
+    .card{
+      background: rgba(20,24,35,.70);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card-pad{padding:22px}
+    .kicker{color:var(--accent); font-size:12px; letter-spacing:.18em; text-transform:uppercase}
+    .title{font-size:38px; line-height:1.08; margin:10px 0 10px}
+    @media (max-width: 520px){.title{font-size:30px}}
+    .subtitle{color:var(--muted); margin:0 0 14px; font-size:15px}
+    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(20,24,35,.55);
+      font-weight:600;
+      font-size:13px;
+    }
+    .btn.primary{background: rgba(127,209,196,.14); border-color: rgba(127,209,196,.45)}
+    .btn.primary:hover{background: rgba(127,209,196,.20)}
+    .btn:hover{border-color: rgba(214,179,106,.55)}
+
+    .mini{
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .mini .stat{padding:16px; border-radius:16px; border:1px solid var(--line); background: rgba(20,24,35,.50)}
+    .stat b{display:block; font-size:13px; margin-bottom:4px}
+    .stat span{display:block; color:var(--muted); font-size:12px}
+
+    /* Sections */
+    section{margin-top:18px}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin:22px 0 10px}
+    .section-head h2{margin:0; font-size:18px}
+    .section-head p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px}
+    .col-6{grid-column: span 6}
+    .col-5{grid-column: span 5}
+    .col-7{grid-column: span 7}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-5,.col-7,.col-4,.col-8{grid-column: span 12}
+    }
+
+    .item{
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(20,24,35,.55);
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .item:hover{transform: translateY(-2px); border-color: rgba(127,209,196,.40)}
+    .item h3{margin:0 0 6px; font-size:14px}
+    .meta{color:var(--muted); font-size:12px; margin-bottom:10px}
+    .item p{margin:0; color:var(--ink); font-size:13px}
+
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:11px; color:var(--muted); border:1px solid var(--line); padding:6px 8px; border-radius:999px}
+
+    /* List */
+    .list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
+    .li{padding:14px; border-radius:16px; border:1px solid var(--line); background: rgba(20,24,35,.50)}
+    .li strong{display:block; font-size:13px}
+    .li span{display:block; color:var(--muted); font-size:12px; margin-top:3px}
+
+    /* Footer */
+    footer{margin-top:28px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+
+    /* Small utility */
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .note{color:var(--muted); font-size:12px}
+    .sr{position:absolute; left:-9999px}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Maatii K. Dungy</h1>
+          <small>Communications • Media • Culture (Academic Portfolio)</small>
+        </div>
+      </div>
+      <div class="links" aria-label="Site navigation">
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#writing">Writing</a>
+        <a class="pill" href="#leadership">Leadership</a>
+        <a class="pill" href="#cv">CV</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="card-pad">
+            <div class="kicker">Academic Portfolio</div>
+            <h2 class="title">Storytelling, culture, and public engagement in academic spaces.</h2>
+            <p class="subtitle">I support institutional communication that makes ideas accessible—across campus media, promotions, photography, and academic communications.</p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#projects" aria-label="View selected projects">View selected work →</a>
+              <a class="btn" href="https://www.linkedin.com/in/maatiikdungy/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="#cv">Download CV/Resume</a>
+            </div>
+            <div class="hr"></div>
+            <p class="note">Tip: Replace placeholder text with your specific artifacts (PDFs, clips, images). Keep this site light: fewer strong pieces > many weak ones.</p>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="stat">
+            <b>Primary focus</b>
+            <span>Academic communications + campus media + cultural storytelling</span>
+          </div>
+          <div class="stat">
+            <b>Signature strengths</b>
+            <span>Clear messaging • Audience awareness • Creative execution • Follow-through</span>
+          </div>
+          <div class="stat">
+            <b>Currently</b>
+            <span>Building a body of work across writing, media production, and institutional storytelling</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Academic-facing profile (clear, credible, still creative)</p>
+      </div>
+      <div class="grid">
+        <div class="item col-7">
+          <h3>Academic Brand Statement</h3>
+          <div class="meta">Use this for university pages, programs, and conference bios.</div>
+          <p>I am a communications and media professional focused on how storytelling, culture, and media operate within academic and public institutions. My work supports clear, inclusive communication that helps research, programs, and campus initiatives reach broader audiences.</p>
+          <div class="tags">
+            <span class="tag">Academic communications</span>
+            <span class="tag">Public engagement</span>
+            <span class="tag">Campus media</span>
+            <span class="tag">Institutional voice</span>
+          </div>
+        </div>
+        <div class="item col-5">
+          <h3>Quick bio</h3>
+          <div class="meta">Short version for directories and bylines.</div>
+          <p><b>Communications and media professional</b> focused on storytelling, culture, and public engagement in academic spaces.</p>
+          <div class="hr"></div>
+          <h3>Keywords</h3>
+          <p class="note">Academic Communications · Media Studies · Cultural Communication · Storytelling · Campus Media · Institutional Messaging</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>Curated roles that support your academic + media narrative</p>
+      </div>
+
+      <div class="grid">
+        <div class="item col-6">
+          <h3>Academic Communications</h3>
+          <div class="meta">University roles & institutional messaging</div>
+          <ul class="list">
+            <li class="li"><strong>Communications & Media Assistant — Purdue University Northwest</strong><span>Social content • Event support • Front-facing communication • Institutional voice</span></li>
+            <li class="li"><strong>Social Media Marketing Intern — Fayetteville State University</strong><span>Content scheduling • Engagement • Campaign support • Audience insights</span></li>
+          </ul>
+        </div>
+
+        <div class="item col-6">
+          <h3>Campus Media & Broadcasting</h3>
+          <div class="meta">Radio, promotions, audience-building</div>
+          <ul class="list">
+            <li class="li"><strong>Promotions Director — WRBC The Blaze</strong><span>Campaign planning • Events/outreach • Audience development • Team collaboration</span></li>
+            <li class="li"><strong>On-Air Personality — Bronco i-Radio</strong><span>Live hosting • Segment planning • Audio presence • Listener engagement</span></li>
+          </ul>
+        </div>
+
+        <div class="item col-12">
+          <h3>Creative Media</h3>
+          <div class="meta">Visual storytelling & production</div>
+          <p><strong>Photographer — Shutterfly</strong> (add a small gallery below or link to a PDF). Focus on creative direction, client collaboration, and production workflow.</p>
+          <div class="tags">
+            <span class="tag">Visual storytelling</span>
+            <span class="tag">Creative direction</span>
+            <span class="tag">Production workflow</span>
+            <span class="tag">Digital asset management</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Projects = academic credibility. Include reflection + outcomes.</p>
+      </div>
+
+      <div class="grid">
+        <article class="item col-4">
+          <h3>Project Title #1</h3>
+          <div class="meta">Course / Organization • Year</div>
+          <p>1–2 sentences: what you explored and why it matters. Add your role + audience.</p>
+          <div class="tags"><span class="tag">Storytelling</span><span class="tag">Public engagement</span></div>
+        </article>
+
+        <article class="item col-4">
+          <h3>Project Title #2</h3>
+          <div class="meta">Radio / Promotions • Year</div>
+          <p>Describe the campaign/program. What did you build? What did you learn? What changed?</p>
+          <div class="tags"><span class="tag">Audience development</span><span class="tag">Media strategy</span></div>
+        </article>
+
+        <article class="item col-4">
+          <h3>Project Title #3</h3>
+          <div class="meta">Photography / Media • Year</div>
+          <p>Document a series with a short reflection. Include 4–8 images or a linked PDF.</p>
+          <div class="tags"><span class="tag">Visual narrative</span><span class="tag">Culture</span></div>
+        </article>
+
+        <div class="item col-12">
+          <h3>How to write a strong project entry</h3>
+          <p class="note"><b>Include:</b> Title · Context · Your role · Audience · Methods/tools · Outcomes · 2–3 sentence reflection. Academic portfolios value reflection as much as output.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing">
+      <div class="section-head">
+        <h2>Writing & Scholarship</h2>
+        <p>2–3 strong pieces is enough to start</p>
+      </div>
+      <div class="grid">
+        <div class="item col-6">
+          <h3>Research / Academic Writing</h3>
+          <div class="meta">Add PDFs or links</div>
+          <ul class="list">
+            <li class="li"><strong>Paper Title (PDF)</strong><span>1 sentence summary + key themes</span></li>
+            <li class="li"><strong>Conference Abstract / Proposal</strong><span>Focus, methods, contribution</span></li>
+          </ul>
+        </div>
+        <div class="item col-6">
+          <h3>Public-Facing Writing</h3>
+          <div class="meta">Blog posts, op-eds, newsletters, captions</div>
+          <ul class="list">
+            <li class="li"><strong>Article / Post Title</strong><span>What it argues + who it’s for</span></li>
+            <li class="li"><strong>Program Notes / Feature</strong><span>Institutional voice + accessibility</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="leadership">
+      <div class="section-head">
+        <h2>Leadership & Engagement</h2>
+        <p>Institutional trust, representation, and coordination</p>
+      </div>
+      <div class="grid">
+        <div class="item col-6">
+          <h3>Leadership roles</h3>
+          <ul class="list">
+            <li class="li"><strong>Secretary — Student Organization</strong><span>Documentation • Communication • Coordination • Meeting minutes</span></li>
+            <li class="li"><strong>Miss Bronco Women</strong><span>Campus representation • Public presence • Engagement initiatives</span></li>
+          </ul>
+        </div>
+        <div class="item col-6">
+          <h3>What this signals</h3>
+          <p>Creative work needs structure. These roles demonstrate reliability, professional communication, and the ability to represent an institution in public-facing settings.</p>
+          <div class="tags"><span class="tag">Professionalism</span><span class="tag">Representation</span><span class="tag">Organization</span><span class="tag">Service</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <div class="section-head">
+        <h2>CV / Resume</h2>
+        <p>Make downloads easy (PDF)</p>
+      </div>
+      <div class="grid">
+        <div class="item col-6">
+          <h3>Downloads</h3>
+          <p class="note">Replace these placeholders with your real file links once hosted (Google Drive, Dropbox, or your site).</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#" onclick="alert('Replace this link with your CV PDF URL.'); return false;">Download CV</a>
+            <a class="btn" href="#" onclick="alert('Replace this link with your Resume PDF URL.'); return false;">Download Resume</a>
+            <a class="btn" href="#" onclick="alert('Replace this link with your Brand Guide PDF URL.'); return false;">Brand Guide</a>
+          </div>
+        </div>
+        <div class="item col-6">
+          <h3>Quick formatting rules</h3>
+          <ul class="list">
+            <li class="li"><strong>Use consistent titles</strong><span>Communications • Media • Culture (Academic spaces)</span></li>
+            <li class="li"><strong>Keep the site curated</strong><span>Lead with your strongest 3–6 artifacts</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Simple, professional, direct</p>
+      </div>
+      <div class="grid">
+        <div class="item col-8">
+          <h3>Let’s connect</h3>
+          <p>For academic communications, campus media, cultural storytelling, or public engagement opportunities.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:brave_artist17@live.com">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/maatiikdungy/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="hr"></div>
+          <p class="note">Optional: add a portfolio folder link (Drive/Dropbox) or an audio reel once you have it.</p>
+        </div>
+        <div class="item col-4">
+          <h3>Location</h3>
+          <p class="note">Northwest Indiana / Chicagoland (edit as needed)</p>
+          <div class="hr"></div>
+          <h3>Availability</h3>
+          <p class="note">Internships • Part-time • Project-based • Full-time (choose what applies)</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Maatii K. Dungy</div>
+      <div>Built for clarity, credibility, and creative-forward academic work.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
